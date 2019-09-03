@@ -1,1 +1,1 @@
-bucket_name=#{BUCKET_NAME}
+bucket_name = "#{BUCKET_NAME}"
