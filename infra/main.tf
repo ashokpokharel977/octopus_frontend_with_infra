@@ -2,7 +2,7 @@ provider "aws" {
 }
 terraform {
   backend "s3" {
-    bucket = "auden-octopus-terraform-releasetour-1"
+    bucket = "auden-octopus-terraform-releasetour"
     region = "us-east-1"
   }
 }
