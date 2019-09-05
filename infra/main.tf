@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"
+
 }
 
 provider "aws" {
@@ -33,7 +33,7 @@ resource "aws_s3_bucket_policy" "b1" {
   bucket     = "${aws_s3_bucket.auden_bucket_1.id}"
   provider   = "aws.ireland"
   depends_on = [aws_s3_bucket_policy.b1]
-  policy     = <<POLICY
+  policy     = <<EOF
 {
   "Version": "2012-10-17",
   "Id": "MYBUCKETPOLICY",
@@ -47,7 +47,7 @@ resource "aws_s3_bucket_policy" "b1" {
     }
   ]
 }
-POLICY
+EOF
 }
 resource "aws_s3_bucket" "auden_bucket_2" {
   bucket = "${var.bucket_name_2}"
@@ -66,7 +66,7 @@ resource "aws_s3_bucket_policy" "b2" {
   bucket = "${aws_s3_bucket.auden_bucket_2.id}"
   provider = "aws.london"
   depends_on = [aws_s3_bucket.auden_bucket_2]
-  policy = <<POLICY
+  policy = <<EOF
 {
   "Version": "2012-10-17",
   "Id": "MYBUCKETPOLICY",
@@ -80,7 +80,7 @@ resource "aws_s3_bucket_policy" "b2" {
     }
   ]
 }
-POLICY
+EOF
 }
 
 resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
