@@ -10,12 +10,12 @@ provider "aws" {
   alias  = "london"
   region = "eu-west-2"
 }
-# terraform {
-#   backend "s3" {
-#     bucket = "auden-octopus-terraform-releasetour"
-#     region = "us-east-1"
-#   }
-# }
+terraform {
+  backend "s3" {
+    bucket = "auden-octopus-terraform-releasetour"
+    region = "us-east-1"
+  }
+}
 resource "aws_s3_bucket" "auden_bucket_1" {
   bucket        = "${var.bucket_name_1}"
   provider      = "aws.ireland"
