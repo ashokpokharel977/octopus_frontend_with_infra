@@ -1,5 +1,5 @@
 provider "aws" {
-
+  
 }
 
 provider "aws" {
@@ -29,26 +29,25 @@ resource "aws_s3_bucket" "auden_bucket_1" {
     error_document = "error.html"
   }
 }
-# resource "aws_s3_bucket_policy" "b1" {
-#   bucket     = "${aws_s3_bucket.auden_bucket_1.id}"
-#   provider   = "aws.ireland"
-#   depends_on = [aws_s3_bucket_policy.b1]
-#   policy     = <<EOF
-# {
-#   "Version": "2012-10-17",
-#   "Id": "MYBUCKETPOLICY",
-#   "Statement": [
-#     {
-#       "Sid": "IPAllow",
-#       "Effect": "Allow",
-#       "Principal": "*",
-#       "Action": "s3:GetObject",
-#       "Resource": "${aws_s3_bucket.auden_bucket_1.arn}/*"
-#     }
-#   ]
-# }
-# EOF
-# }
+resource "aws_s3_bucket_policy" "b1" {
+  bucket     = "${aws_s3_bucket.auden_bucket_1.id}"
+  provider   = "aws.ireland"
+  policy     = <<EOF
+{
+  "Version": "2012-10-17",
+  "Id": "MYBUCKETPOLICY",
+  "Statement": [
+    {
+      "Sid": "IPAllow",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "${aws_s3_bucket.auden_bucket_1.arn}/*"
+    }
+  ]
+}
+EOF
+}
 resource "aws_s3_bucket" "auden_bucket_2" {
   bucket        = "${var.bucket_name_2}"
   provider      = "aws.london"
@@ -62,26 +61,25 @@ resource "aws_s3_bucket" "auden_bucket_2" {
     error_document = "error.html"
   }
 }
-# resource "aws_s3_bucket_policy" "b2" {
-#   bucket = "${aws_s3_bucket.auden_bucket_2.id}"
-#   provider = "aws.london"
-#   depends_on = [aws_s3_bucket.auden_bucket_2]
-#   policy = <<EOF
-# {
-#   "Version": "2012-10-17",
-#   "Id": "MYBUCKETPOLICY",
-#   "Statement": [
-#     {
-#       "Sid": "IPAllow",
-#       "Effect": "Allow",
-#       "Principal": "*",
-#       "Action": "s3:GetObject",
-#       "Resource": "${aws_s3_bucket.auden_bucket_2.arn}/*"
-#     }
-#   ]
-# }
-# EOF
-# }
+resource "aws_s3_bucket_policy" "b2" {
+  bucket = "${aws_s3_bucket.auden_bucket_2.id}"
+  provider = "aws.london"
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Id": "MYBUCKETPOLICY",
+  "Statement": [
+    {
+      "Sid": "IPAllow",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "${aws_s3_bucket.auden_bucket_2.arn}/*"
+    }
+  ]
+}
+EOF
+}
 
 resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
   comment = "Origin access identity for ${aws_s3_bucket.auden_bucket_1.id} and ${aws_s3_bucket.auden_bucket_2.id}"
