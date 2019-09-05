@@ -23,7 +23,7 @@ module "website_frontend_bucket_london" {
   bucket_name = "${var.bucket_name_2}"
 
   providers = {
-    aws = "aws.ireland"
+    aws = "aws.london"
   }
 }
 
