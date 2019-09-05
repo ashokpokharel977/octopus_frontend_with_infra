@@ -52,7 +52,7 @@ resource "aws_s3_bucket" "auden_bucket_1" {
 resource "aws_s3_bucket" "auden_bucket_2" {
   bucket        = "${var.bucket_name_2}"
   provider      = "aws.london"
-  region        = "us-east-1"
+  region        = "eu-west-2"
   force_destroy = true
   tags = {
     Name = "Auden Bucket"
