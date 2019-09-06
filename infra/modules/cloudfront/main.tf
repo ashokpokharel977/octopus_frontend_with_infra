@@ -1,5 +1,12 @@
 provider "aws" {}
 
+terraform {
+  backend "s3" {
+    bucket = "auden-octopus-terraform-releasetour"
+    region = "us-east-1"
+  }
+}
+
 data "aws_s3_bucket" "bucket_1" {
   bucket = "${var.bucket_1}"
 }

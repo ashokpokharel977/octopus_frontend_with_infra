@@ -1,5 +1,12 @@
 provider "aws" {}
 
+terraform {
+  backend "s3" {
+    bucket = "auden-octopus-terraform-releasetour"
+    region = "us-east-1"
+  }
+}
+
 resource "aws_s3_bucket" "auden_bucket" {
   bucket        = "${var.bucket_name}"
   force_destroy = true
