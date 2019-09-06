@@ -1,8 +1,8 @@
-variable "bucket_1" {
+variable "bucket_1_domain" {
   type = "string"
 }
 
-variable "bucket_2" {
+variable "bucket_2_domain" {
   type = "string"
 }
 

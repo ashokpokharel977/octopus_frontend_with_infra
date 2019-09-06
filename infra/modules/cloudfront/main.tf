@@ -7,14 +7,6 @@ terraform {
   }
 }
 
-data "aws_s3_bucket" "bucket_1" {
-  bucket = "${var.bucket_1}"
-}
-
-data "aws_s3_bucket" "bucket_2" {
-  bucket = "${var.bucket_2}"
-}
-
 resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
   comment = "Origin access identity for ${var.bucket_1} and ${var.bucket_2}"
 }
@@ -39,7 +31,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   origin {
-    domain_name = "${data.aws_s3_bucket.bucket_1.bucket_domain_name}"
+    domain_name = "${var.bucket_1_domain}"
     origin_id   = "primaryS3"
 
     s3_origin_config {
@@ -48,7 +40,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   origin {
-    domain_name = "${data.aws_s3_bucket.bucket_1.bucket_domain_name}"
+    domain_name = "${var.bucket_2_domain}"
     origin_id   = "failoverS3"
 
     s3_origin_config {
