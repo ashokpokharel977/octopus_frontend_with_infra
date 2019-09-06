@@ -1,17 +1,23 @@
+provider "aws" {}
+
 resource "aws_s3_bucket" "auden_bucket" {
   bucket        = "${var.bucket_name}"
   force_destroy = true
+
   tags = {
     Name = "Auden Bucket"
   }
+
   website {
     index_document = "index.html"
     error_document = "error.html"
   }
 }
+
 resource "aws_s3_bucket_policy" "b1" {
-  bucket     = "${aws_s3_bucket.auden_bucket.id}"
-  policy     = <<EOF
+  bucket = "${aws_s3_bucket.auden_bucket.id}"
+
+  policy = <<EOF
 {
   "Version": "2012-10-17",
   "Id": "MYBUCKETPOLICY",
