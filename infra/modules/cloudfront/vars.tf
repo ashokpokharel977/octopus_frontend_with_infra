@@ -1,11 +1,11 @@
 variable "bucket_1_domain" {
   type    = "string"
-  default = ""
+  default = "randombucket2.s3.amazonaws.com"
 }
 
 variable "bucket_2_domain" {
   type    = "string"
-  default = ""
+  default = "randombucket2.s3.amazonaws.com"
 }
 
 variable "zone_id" {
@@ -14,7 +14,7 @@ variable "zone_id" {
 
 variable "url_name" {
   type    = "string"
-  default = ""
+  default = "random.sandbox.tk"
 }
 
 variable "certificate_arn" {
