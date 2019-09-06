@@ -20,9 +20,10 @@ resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
+  aliases = ["${var.url_name}"]
+
   origin_group {
     origin_id = "groupS3"
-    aliases   = ["${var.url_name}"]
 
     failover_criteria {
       status_codes = [403, 404, 500, 502]
