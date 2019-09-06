@@ -1,9 +1,11 @@
 variable "bucket_1_domain" {
-  type = "string"
+  type    = "string"
+  default = ""
 }
 
 variable "bucket_2_domain" {
-  type = "string"
+  type    = "string"
+  default = ""
 }
 
 variable "zone_id" {
@@ -11,7 +13,8 @@ variable "zone_id" {
 }
 
 variable "url_name" {
-  type = "string"
+  type    = "string"
+  default = ""
 }
 
 variable "certificate_arn" {
