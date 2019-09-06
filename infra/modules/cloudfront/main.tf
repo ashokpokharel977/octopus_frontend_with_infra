@@ -8,7 +8,7 @@ terraform {
 }
 
 resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
-  comment = "Origin access identity for ${var.bucket_1} and ${var.bucket_2}"
+  comment = "Origin access identity for ${var.bucket_1_domain} and ${var.bucket_2_domain}"
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
@@ -50,7 +50,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   enabled             = true
   is_ipv6_enabled     = true
-  comment             = "CloudFront distribution for ${var.bucket_1} and ${var.bucket_2}"
+  comment             = "CloudFront distribution for ${var.bucket_1_domain} and ${var.bucket_2_domain}"
   default_root_object = "index.html"
   wait_for_deployment = false
 
